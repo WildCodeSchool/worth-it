@@ -1,0 +1,11 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Quiz{% endblock %}
+
+{% block body %}
+
+    <div {{ react_component('QuizzPage') }}>
+        Loading... <i class="fas fa-cog fa-spin fa-3x"></i>
+    </div>
+
+{% endblock %}
