@@ -7,4 +7,5 @@
 db.php
 .idea
 .vscode
-/build/
+public/build
+
