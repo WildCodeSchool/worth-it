@@ -1,3 +1,5 @@
+import React, {useEffect} from 'react';
+
 function ProductPage(){
     return (
         <h1>ProductPage</h1>  )
