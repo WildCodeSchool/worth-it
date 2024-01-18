@@ -60,7 +60,7 @@ COPY --from=composer_upstream --link /composer /usr/bin/composer
 
 HEALTHCHECK --start-period=60s CMD curl -f http://localhost:2019/metrics || exit 1
 
-ENV APP_ENV=prod
+ENV APP_ENV=dev
 
 COPY --link composer.* symfony.* package.json yarn.lock ./
 RUN set -eux; \
