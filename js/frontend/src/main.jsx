@@ -8,6 +8,7 @@ import App from "./App";
 import "mdb-react-ui-kit/dist/scss/mdb.dark.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import QuizzPage from "./pages/QuizzPage";
+import RecommandationPage from "./pages/RecommandationPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/quizz",
     element: <QuizzPage />,
+  },
+  {
+    path: "/recommandation",
+    element: <RecommandationPage />,
   },
 ]);
 
