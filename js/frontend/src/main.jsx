@@ -11,6 +11,8 @@ import QuizzPage from "./pages/QuizzPage";
 import RecommandationPage from "./pages/RecommandationPage";
 import { AppContextProvider } from "./context/AppContext";
 import ApiService from "./services/api.service";
+import ShopPage from "./pages/ShopPage";
+import ProductPage from "./pages/ProductPage";
 
 const apiService = new ApiService();
 
@@ -51,6 +53,14 @@ const router = createBrowserRouter([
       {
         path: "/recommandation",
         element: <RecommandationPage />,
+      },
+      {
+        path: "/shops",
+        element: <ShopPage />,
+      },
+      {
+        path: "/product",
+        element: <ProductPage />,
       },
     ],
   },

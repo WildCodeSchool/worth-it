@@ -6,12 +6,16 @@
   text-decoration: none;
   background-color: #f7f7f7;
 }
+
 body {
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
   margin: 0;
   width: 100vw;
+  height: 100vh;
 }
 
 h1,
@@ -20,10 +24,4 @@ h3,
 h4,
 h5 {
   font-family: "Poppins", sans-serif;
-}
-
-.img-fluid {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
 }
