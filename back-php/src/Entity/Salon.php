@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Salon
 {
     #[ORM\Id]
-    #[ORM\Column]
+    #[ORM\Column(length: 255)]
     private ?string $id = null;
 
     #[ORM\Column(length: 255)]
