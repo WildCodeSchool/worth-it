@@ -1,4 +1,6 @@
+
 import { useEffect, useState } from "react";
+
 import axios from "axios";
 import { MDBContainer } from "mdb-react-ui-kit";
 import Recommandation1 from "../components/Recommandation1";
@@ -7,6 +9,7 @@ import Recommandation2 from "../components/Recommandation2";
 // import ApiService from "../services/api.service";
 
 function RecommandationPage() {
+
 const [products, setProducts] = useState([])
 
   const getAll = async () => {
@@ -31,6 +34,7 @@ console.info(products)
         ))}
       </MDBContainer>
     </div>
+
   );
 }
 

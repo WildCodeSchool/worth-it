@@ -6,11 +6,13 @@ import {
   MDBCardTitle,
   MDBContainer,
 } from "mdb-react-ui-kit";
+
 import { useParams } from "react-router-dom";
 
 function ProductPage() {
   const {id} = useParams()
   console.info(id)
+
   return (
     <MDBContainer fluid>
       <MDBCard alignment="center" className="bg-white mb-9 mt-9">
