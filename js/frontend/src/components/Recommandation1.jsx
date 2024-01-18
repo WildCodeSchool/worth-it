@@ -7,7 +7,14 @@ import {
   MDBCardTitle,
 } from "mdb-react-ui-kit";
 
-function Recommandation1() {
+import { useNavigate } from "react-router-dom";
+function Recommandation1({product}) {
+  const chosenProduct = product
+  const navigate = useNavigate()
+  const redirect = () => {
+    navigate(`/product/${product.productId}`)
+  }
+
   return (
     <MDBCard alignment="center" className="bg-white mb-9 mt-9">
       <MDBCardBody>
@@ -22,10 +29,12 @@ function Recommandation1() {
 
         <MDBCardBody className=" bg-dark">
           <MDBCardText className="text-white mt-4 fs-5 bg-dark">
-            Nom du produit
+
+            {product.productName}
           </MDBCardText>
           <MDBCardText className="text-white fs-6 fst-italic bg-dark">
-            Marque
+            {product.brand}
+
           </MDBCardText>
           <MDBCardText className="text-white fs-6 text-decoration-line-through bg-dark">
             0 €
@@ -34,7 +43,9 @@ function Recommandation1() {
           <p className="text-danger fs-5 fw-bolder bg-dark">
             - 20 % dans votre salon
           </p>
-          <MDBBtn className="text-black bg-white mb-4 pt-2 pb-2 fs-7">
+
+          <MDBBtn className="text-black bg-white mb-4 pt-2 pb-2 fs-7" onClick={redirect}>
+
             Plus d'information
           </MDBBtn>
         </MDBCardBody>
