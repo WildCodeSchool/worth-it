@@ -25,15 +25,18 @@ class OrderLine
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $productBasePrice = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orderLines')]
-    private ?Salon $salon = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $product = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'orderLines')]
-    private Collection $product;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $salon = null;
 
-    public function __construct()
+
+    public function setId(?string $id): static
     {
-        $this->product = new ArrayCollection();
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getId(): ?string
@@ -77,39 +80,28 @@ class OrderLine
         return $this;
     }
 
-    public function getSalon(): ?Salon
+    public function getProduct(): ?string
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?string $product): static
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function getSalon(): ?string
     {
         return $this->salon;
     }
 
-    public function setSalon(?Salon $salon): static
+    public function setSalon(?string $salon): static
     {
         $this->salon = $salon;
 
         return $this;
     }
 
-    /**
-     * @return Collection<int, Product>
-     */
-    public function getProduct(): Collection
-    {
-        return $this->product;
-    }
-
-    public function addProduct(Product $product): static
-    {
-        if (!$this->product->contains($product)) {
-            $this->product->add($product);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        $this->product->removeElement($product);
-
-        return $this;
-    }
 }
