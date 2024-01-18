@@ -13,4 +13,10 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    #[Route('/testapi', name: 'app_test_api')]
+    public function testapi(): Response
+    {
+        return $this->render('home/testapi.html.twig');
+    }
 }

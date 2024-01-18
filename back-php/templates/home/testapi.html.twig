@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block body %}
+	<div class="pink-stripe">
+		<h1>
+			test Api data;
+		</h1>
+	</div>
+	<div class="white-stripe">
+		<img src="{{ asset('build/images/logo-wild-code-school.svg') }}" alt="">
+	</div>
+	<div id="info"></div>
+
+	<script>
+		function display(data) {
+const info = document.getElementById("info");
+const hairs = JSON.parse(data);
+
+const ul = document.createElement('ul');
+
+hairs.forEach(element => {
+const li = document.createElement('li');
+li.append(`Pour des cheveux ${
+element.hairType1
+}s, ${
+element.hairType2
+}s, ${
+element.hairType3
+} appartenant à une femme aussi élégante que vous, il faut utiliser ${
+element.productName
+} de ${
+element.brand
+}`);
+ul.append(li);
+li.style.fontSize = '3rem';
+});
+
+info.append(ul);
+}
+let dateDeNaissance = '1990-12-25';
+let hairType1 = 'Long';
+let hairType2 = 'Ondule';
+let hairType3 = 'Sec';
+
+fetch("http://localhost:5000/api?data=" + dateDeNaissance + "&data=" + hairType1 + "&data=" + hairType2 + "&data=" + hairType3).then((resp) => resp.json()).then((data) => display(data)).catch((err) => console.error(err));
+	</script>
+
+{% endblock %}

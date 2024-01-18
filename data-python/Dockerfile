@@ -35,8 +35,16 @@ RUN pip3 install \
     dash \
     dash_bootstrap_components
 
-EXPOSE 8501
+RUN pip3 install flask.restful \
+    flask.cors
+
+#EXPOSE 8501
+EXPOSE 5000
 
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENV FLASK_APP=main.py
+#ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
+#ENTRYPOINT ["python", "main.py"]
+#CMD [ "python", "main.py", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host", "0.0.0.0"]
