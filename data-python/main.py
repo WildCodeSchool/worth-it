@@ -39,6 +39,7 @@ class my_API_class(Resource):
 
         # Importation dataframe
         df_product = pd.read_csv(r'products.csv', sep=';')
+        df_orderlines = pd.read_csv(r'orderlines.csv', sep=';')
 
         ########################### ENTRAINENEMENT MODELE SUR 6 CATEGORIES #############################
 
@@ -62,6 +63,11 @@ class my_API_class(Resource):
         # 6 voisins les plus proches
         neighbors = knn_model.kneighbors(X2_encoded, n_neighbors=6)
         df_neighbors = df_product.iloc[neighbors[1][0]]
+        
+        df_orderlines = df_orderlines.drop_duplicates(subset='productId')
+        df_neighbors = pd.merge(df_neighbors, df_orderlines, how='left', on='productId')
+        df_neighbors = df_neighbors[['productId', 'brand', 'productName', 'productCategory', 'age',
+       'hairType1', 'hairType2', 'hairType3', 'photoUrl', 'productBasePrice']]
 
         # Création d'un dataframe avec les 6 voisins
         json_data = df_neighbors.to_json(orient='records')
