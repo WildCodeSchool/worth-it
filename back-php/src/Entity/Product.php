@@ -13,9 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(length: 255)]
+    private ?string $id = null;
 
     #[ORM\Column(length: 255)]
     private ?string $brand = null;

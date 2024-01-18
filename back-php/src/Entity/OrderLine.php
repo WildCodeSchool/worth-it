@@ -13,9 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class OrderLine
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?string $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $productQuantity = null;
@@ -37,7 +36,7 @@ class OrderLine
         $this->product = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

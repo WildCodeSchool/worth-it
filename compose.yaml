@@ -80,6 +80,7 @@ services:
     volumes:
       - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
       - db_data:/var/lib/mysql
+    tty: true
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-prootpassword"] # Command to check health.
       interval: 5s # Interval between health checks.
