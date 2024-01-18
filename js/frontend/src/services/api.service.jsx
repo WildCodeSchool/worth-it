@@ -18,11 +18,15 @@ export default class ApiService {
   }
 
   getConfig() {
-    const config = { headers: {} };
+    const config = {
+      headers: {
+        "Content-Type": "application/ld+json",
+      },
+    };
 
-    if (this.#token) {
-      config.headers.Authorization = `bearer ${this.#token}`;
-    }
+    // if (this.#token) {
+    //   config.headers.Authorization = `bearer ${this.#token}`;
+    // }
 
     return config;
   }

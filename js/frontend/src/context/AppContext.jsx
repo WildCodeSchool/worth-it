@@ -22,7 +22,7 @@ export function AppContextProvider({ children, apiService }) {
   const login = async (credentials) => {
     try {
       const data = await apiService.post(
-        `http://localhost:5021/login`,
+        `http://localhost:8000/auth`,
         credentials
       );
 
@@ -32,20 +32,11 @@ export function AppContextProvider({ children, apiService }) {
 
       apiService.setToken(data.token);
 
-      const result = await apiService.get(
-        "http://localhost:5021/users/personal"
-      );
-
       // console.log("User data from API:", result.data);
 
       // alert(`Content de vous revoir ${result.data.email}`); // eslint-disable-line no-alert
 
-      setUser(result.data);
-
-      if (result.data.is_admin === 1) {
-        navigate("/admin");
-      }
-      return navigate("/home");
+      return navigate("/quizz");
     } catch (err) {
       throw new Error("Identifiants incorrects"); // eslint-disable-line no-alert
     }
@@ -53,7 +44,15 @@ export function AppContextProvider({ children, apiService }) {
 
   const register = async (newUser) => {
     try {
-      const response = await axios.post("http://localhost:5021/users", newUser);
+      const response = await axios.post(
+        "http://localhost:8000/api/users",
+        newUser,
+        {
+          headers: {
+            "Content-Type": "application/ld+json",
+          },
+        }
+      );
 
       const newUserResponse = response.data;
       // console.log("User registered successfully. Data:", newUserResponse);

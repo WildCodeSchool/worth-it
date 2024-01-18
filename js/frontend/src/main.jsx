@@ -13,6 +13,8 @@ import { AppContextProvider } from "./context/AppContext";
 import ApiService from "./services/api.service";
 import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 const apiService = new ApiService();
 
@@ -46,9 +48,18 @@ const router = createBrowserRouter([
       </AppContextProvider>
     ),
     children: [
+      { path: "/", element: <Register /> },
       {
         path: "/quizz",
         element: <QuizzPage />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/recommandation",

@@ -1,7 +1,7 @@
 // Load environment variables from .env file
 require("dotenv").config();
 
-const fs = require("node:fs");
+// const fs = require("node:fs");
 const path = require("node:path");
 
 // Build the path to the schema SQL file
@@ -16,7 +16,7 @@ const mysql = require("mysql2/promise");
 const migrate = async () => {
   try {
     // Read the SQL statements from the schema file
-    const sql = fs.readFileSync(schema, "utf8");
+    // const sql = fs.readFileSync(schema, "utf8");
 
     // Create a specific connection to the database
     const database = await mysql.createConnection({
@@ -28,16 +28,16 @@ const migrate = async () => {
     });
 
     // Drop the existing database if it exists
-    await database.query(`drop database if exists ${DB_NAME}`);
+    // await database.query(`drop database if exists ${DB_NAME}`);
 
     // Create a new database with the specified name
-    await database.query(`create database ${DB_NAME}`);
+    // await database.query(`create database ${DB_NAME}`);
 
     // Switch to the newly created database
-    await database.query(`use ${DB_NAME}`);
+    // await database.query(`use ${DB_NAME}`);
 
     // Execute the SQL statements to update the database schema
-    await database.query(sql);
+    // await database.query(sql);
 
     // Close the database connection
     database.end();

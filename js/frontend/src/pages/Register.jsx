@@ -1,25 +1,15 @@
 import React, { useState } from "react";
-import {
-  MDBInput,
-  MDBCol,
-  MDBRow,
-  MDBBtn,
-  MDBSwitch,
-  MDBContainer,
-} from "mdb-react-ui-kit";
+import { MDBBtn, MDBContainer, MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import { UseApp } from "../context/AppContext";
 import Redirection from "../components/Redirection";
 
 export default function Register() {
   const { register, logout } = UseApp();
   const [formValue, setFormValue] = useState({
-    firstname: "",
-    lastname: "",
+    username: "",
     email: "",
     password: "",
-    is_admin: false,
-    secret_question: "",
-    secret_answer: "",
+    birthday: "",
   });
 
   const submitform = async (e) => {
@@ -34,89 +24,65 @@ export default function Register() {
 
   return (
     <MDBContainer fluid className="mt-5">
-      <form className="user-form" onSubmit={(event) => submitform(event)}>
-        <h1 className="mb-5">Créer un compte</h1>
-        <MDBRow className="mb-2">
-          <MDBCol>
-            <MDBInput
-              className="mb-4"
-              value={formValue.lastname}
-              name="lastname"
-              onChange={onChange}
-              id="validationUser2"
-              required="required"
-              label="Nom"
-              type="lastname"
-            />
-          </MDBCol>
-          <MDBCol>
-            <MDBInput
-              className="mb-3"
-              value={formValue.firstname}
-              name="firstname"
-              onChange={onChange}
-              id="validationUser1"
-              required="required"
-              label="Prénom"
-              type="firstname"
-            />
-          </MDBCol>
-        </MDBRow>
-        <MDBInput
-          className="mb-4"
-          value={formValue.email}
-          name="email"
-          onChange={onChange}
-          id="validationUser3"
-          required="required"
-          label="Email"
-          type="email"
-        />
-        <MDBInput
-          className="mb-4"
-          value={formValue.password}
-          name="password"
-          onChange={onChange}
-          id="validationUser4"
-          required="required"
-          label="Mot de passe"
-          type="password"
-        />
-        <MDBInput
-          className="mb-4"
-          value={formValue.secret_question}
-          name="secret_question"
-          onChange={onChange}
-          id="validationUser4"
-          required="required"
-          label="Question secrète ?"
-          type="secret_question"
-        />
-        <MDBInput
-          className="mb-4"
-          value={formValue.secret_answer}
-          name="secret_answer"
-          onChange={onChange}
-          id="validationUser4"
-          required="required"
-          label="Réponse secrète"
-          type="secret_answer"
-        />
-        <MDBSwitch
-          id="flexSwitchCheckDefault"
-          label="Administrateur"
-          onClick={() =>
-            setFormValue({
-              ...formValue,
-              is_admin: !formValue.is_admin,
-            })
-          }
-        />
-        <MDBBtn type="submit" className="mb-4 mt-4" block>
-          Suivant
-        </MDBBtn>
-        <Redirection />
-      </form>
+      <MDBCard alignment="center" className="bg-white mb-8 mt-9 ">
+        <MDBCardBody className="bg-white  mt-9 ">
+          <form onSubmit={(event) => submitform(event)}>
+            <h1 className="pt-4 pb-4 text-black">Créer un compte</h1>
+
+            <MDBCardBody className="bg-black mt-9 ">
+              <div className="d-flex flex-column mb-4 mt-4 bg-black">
+                <h3 className="mt-4 mb-2 text-black bg-white">Pseudo</h3>
+                <input
+                  value={formValue.username}
+                  onChange={onChange}
+                  label="Controlled value"
+                  id="controlledValue"
+                  name="username"
+                  type="text"
+                  className="mb-4 mt-4 "
+                />
+
+                <h3 className="mt-4 mb-2 text-black ">Email</h3>
+                <input
+                  value={formValue.email}
+                  onChange={onChange}
+                  label="Controlled value"
+                  id="controlledValue"
+                  name="email"
+                  type="text"
+                  className="mb-4 mt-4"
+                />
+                <h3 className="mt-4 mb-2 text-black ">Mot de passe</h3>
+                <input
+                  value={formValue.password}
+                  onChange={onChange}
+                  label="Controlled value"
+                  id="controlledValue"
+                  name="password"
+                  type="text"
+                  className="mb-4 mt-4"
+                />
+
+                <h3 className="mt-4 mb-2 text-black ">Date de naissance</h3>
+                <input
+                  value={formValue.birthday}
+                  onChange={onChange}
+                  label="Controlled value"
+                  id="controlledValue"
+                  name="birthday"
+                  type="text"
+                  className="mb-4 mt-4"
+                />
+              </div>
+            </MDBCardBody>
+
+            <MDBBtn type="submit" className="mb-4 mt-4 bg-black" block>
+              Suivant
+            </MDBBtn>
+            <Redirection />
+          </form>
+        </MDBCardBody>
+      </MDBCard>
     </MDBContainer>
   );
 }
