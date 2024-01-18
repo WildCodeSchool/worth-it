@@ -26,6 +26,7 @@ RUN apk add --no-cache \
 		nginx \
 		nodejs \
 		npm \
+        openssl \
 		yarn \
 		zip \
 	;

@@ -11,6 +11,13 @@ if [ -z "$(ls -A 'vendor/' 2>/dev/null)" ]; then
   composer install --prefer-dist --no-progress --no-interaction
 fi
 
+if [ ! -f config/jwt/private.pem ]; then
+    echo "Making sure public / private keys for JWT exist..."
+    php bin/console lexik:jwt:generate-keypair --skip-if-exists --no-interaction
+    setfacl -R -m u:www-data:rX -m u:"$(whoami)":rwX config/jwt
+    setfacl -dR -m u:www-data:rX -m u:"$(whoami)":rwX config/jwt
+fi
+
 if grep -q ^DATABASE_URL= .env; then
   echo "Waiting for database to be ready..."
   ATTEMPTS_LEFT_TO_REACH_DATABASE=60
