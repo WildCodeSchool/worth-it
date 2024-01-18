@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 
-import {
-  MDBInput,
-  MDBCol,
-  MDBRow,
-  MDBCheckbox,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import { Link, useNavigate } from "react-router-dom";
+import { MDBBtn, MDBContainer, MDBCard, MDBCardBody } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 import { UseApp } from "../context/AppContext";
 
 function Login() {
@@ -40,59 +34,47 @@ function Login() {
   };
 
   return (
-    <form className="user-form" onSubmit={handleLogin}>
-      <h1>Connexion</h1>
-      <MDBInput
-        className="mb-4"
-        value={formValue.email}
-        name="email"
-        onChange={onChange}
-        id="validationUser01"
-        required="required"
-        label="Adresse mail"
-        type="email"
-        autoComplete="on"
-      />
-      <MDBInput
-        className="mb-4"
-        value={formValue.password}
-        name="password"
-        onChange={onChange}
-        id="validationUser02"
-        required="required"
-        label="Mot de passe"
-        type="password"
-        autoComplete="current-password"
-      />
+    <MDBContainer fluid className="mt-5">
+      <MDBCard alignment="center" className=" mb-8 mt-9 ">
+        <MDBCardBody className="bg-black  mt-9 ">
+          <form className="user-form" onSubmit={handleLogin}>
+            <h1 className="bg-black pb-4 ">Connexion</h1>
 
-      <MDBRow className="mb-4">
-        <MDBCol className="d-flex justify-content-center">
-          <MDBCheckbox
-            id="form2Example3"
-            label="Se souvenir de moi"
-            defaultChecked
-          />
-        </MDBCol>
-        <MDBCol>
-          <Link className="nav-link navLink" to="/verificationlogin">
-            Mot de passe oublié ?
-          </Link>
-        </MDBCol>
-      </MDBRow>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <MDBBtn type="submit" className="mb-4" block>
-        Se connecter
-      </MDBBtn>
+            <div className="d-flex flex-column mb-4 bg-black">
+              <h3 className="  text-black bg-white">Pseudo</h3>
+              <input
+                value={formValue.email}
+                onChange={onChange}
+                label="Controlled value"
+                id="controlledValue"
+                name="email"
+                type="email"
+                required="required"
+                className=" mt-4 "
+                autoComplete="on"
+              />
+              <h3 className="mt-4 mb-2 text-black ">Mot de passe</h3>
+              <input
+                value={formValue.password}
+                onChange={onChange}
+                label="Controlled value"
+                id="controlledValue"
+                name="password"
+                type="password"
+                required="required"
+                autoComplete="current-password"
+                className="mb-4 mt-4"
+              />
 
-      <div className="text-center">
-        <p>
-          Pas encore membre ?{" "}
-          <Link className="nav-link navLink" to="/register">
-            Enregistrez-vous
-          </Link>
-        </p>
-      </div>
-    </form>
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              <MDBBtn type="submit" className="mb-4 bg-white text-black" block>
+                Se connecter
+              </MDBBtn>
+            </div>
+          </form>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBContainer>
   );
 }
 
