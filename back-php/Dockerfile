@@ -48,7 +48,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 COPY --link nginx.conf /etc/nginx/nginx.conf
 COPY --link php.ini /usr/local/etc/php/conf.d/local.ini
-COPY --link --chmod=755 docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY --chmod=755 docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 ENTRYPOINT ["docker-entrypoint"]
 

@@ -22,13 +22,10 @@ class Salon
     #[ORM\Column(length: 255)]
     private ?string $salonCity = null;
 
-    #[ORM\OneToMany(mappedBy: 'salon', targetEntity: OrderLine::class)]
-    private Collection $orderLines;
 
-    public function __construct()
-    {
-        $this->orderLines = new ArrayCollection();
-    }
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $postalCode = null;
+
 
     public function getId(): ?string
     {
@@ -59,32 +56,23 @@ class Salon
         return $this;
     }
 
-    /**
-     * @return Collection<int, OrderLine>
-     */
-    public function getOrderLines(): Collection
-    {
-        return $this->orderLines;
-    }
 
-    public function addOrderLine(OrderLine $orderLine): static
+
+    public function setId(string $id): static
     {
-        if (!$this->orderLines->contains($orderLine)) {
-            $this->orderLines->add($orderLine);
-            $orderLine->setSalon($this);
-        }
+        $this->id = $id;
 
         return $this;
     }
 
-    public function removeOrderLine(OrderLine $orderLine): static
+    public function getPostalCode(): ?string
     {
-        if ($this->orderLines->removeElement($orderLine)) {
-            // set the owning side to null (unless already changed)
-            if ($orderLine->getSalon() === $this) {
-                $orderLine->setSalon(null);
-            }
-        }
+        return $this->postalCode;
+    }
+
+    public function setPostalCode(?string $postalCode): static
+    {
+        $this->postalCode = $postalCode;
 
         return $this;
     }

@@ -40,13 +40,7 @@ class Product
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photoUrl = null;
 
-    #[ORM\ManyToMany(targetEntity: OrderLine::class, mappedBy: 'product')]
-    private Collection $orderLines;
 
-    public function __construct()
-    {
-        $this->orderLines = new ArrayCollection();
-    }
 
     public function getId(): ?string
     {
@@ -149,29 +143,11 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Collection<int, OrderLine>
-     */
-    public function getOrderLines(): Collection
-    {
-        return $this->orderLines;
-    }
 
-    public function addOrderLine(OrderLine $orderLine): static
-    {
-        if (!$this->orderLines->contains($orderLine)) {
-            $this->orderLines->add($orderLine);
-            $orderLine->addProduct($this);
-        }
 
-        return $this;
-    }
-
-    public function removeOrderLine(OrderLine $orderLine): static
+    public function setId(string $id): static
     {
-        if ($this->orderLines->removeElement($orderLine)) {
-            $orderLine->removeProduct($this);
-        }
+        $this->id = $id;
 
         return $this;
     }
