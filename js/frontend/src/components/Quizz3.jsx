@@ -2,7 +2,7 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn } from "mdb-react-ui-kit";
 
 function Quizz3() {
   return (
-    <MDBCard alignment="center" className="bg-white">
+    <MDBCard alignment="center" className="bg-white mb-9 mt-9">
       <MDBCardBody>
         <MDBCardTitle variant="h2" className="text-black mt-4 fs-1">
           Quel est la nature de vos cheveux ?
