@@ -26,6 +26,7 @@ RUN apk add --no-cache \
 		nginx \
 		nodejs \
 		npm \
+        openssl \
 		yarn \
 		zip \
 	;
@@ -47,7 +48,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 
 COPY --link nginx.conf /etc/nginx/nginx.conf
 COPY --link php.ini /usr/local/etc/php/conf.d/local.ini
-COPY --link --chmod=755 docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY --chmod=755 docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 
 ENTRYPOINT ["docker-entrypoint"]
 
@@ -59,7 +60,7 @@ COPY --from=composer_upstream --link /composer /usr/bin/composer
 
 HEALTHCHECK --start-period=60s CMD curl -f http://localhost:2019/metrics || exit 1
 
-ENV APP_ENV=prod
+ENV APP_ENV=dev
 
 COPY --link composer.* symfony.* package.json yarn.lock ./
 RUN set -eux; \

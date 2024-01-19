@@ -37,13 +37,14 @@ services:
     restart: unless-stopped
     tty: true
     environment:
+      APP_ENV: dev
       DATABASE_URL: mysql://${USER_NAME:-root}:${USER_PASSWORD:-!ChangeMe!}@${DATABASE_SUBDOMAIN_NAME:-database}:3306/${DB_NAME:-bordeaux_hackaton}?serverVersion=${MYSQL_VERSION:-8.0.3}&charset=${MYSQL_CHARSET:-utf8mb4}
       DB_USER: ${USER_NAME:-root}
       DB_PASSWORD: ${USER_PASSWORD:-!ChangeMe!}
       DB_HOST: ${DATABASE_SUBDOMAIN_NAME:-database}
       DB_NAME: ${DB_NAME:-bordeaux_hackaton}
     volumes:
-        - ./back-php:/app
+      - ./back-php:/app
     ports:
       # HTTP
       - target: 80
@@ -61,8 +62,8 @@ services:
     tty: true
     ports:
       # HTTP
-      - target: 8501
-        published: 8501
+      - target: 5000
+        published: 5000
         protocol: tcp
 
   database:
@@ -80,8 +81,17 @@ services:
     volumes:
       - ./database-setup.sh:/docker-entrypoint-initdb.d/setup.sh
       - db_data:/var/lib/mysql
+    tty: true
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-prootpassword"] # Command to check health.
+      test: [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-uroot",
+          "-prootpassword",
+        ] # Command to check health.
       interval: 5s # Interval between health checks.
       timeout: 5s # Timeout for each health checking.
       retries: 20 # Hou many times retries.
