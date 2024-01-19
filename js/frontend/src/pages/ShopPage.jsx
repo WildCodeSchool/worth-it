@@ -7,19 +7,23 @@ import {
   MDBContainer,
 } from "mdb-react-ui-kit";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ShopPage() {
   const [shopFound, setshopFound] = useState();
   const [shopSearch, setshopSearch] = useState();
+  const navigation = useNavigate();
 
-  function searchShop() {
-    console.info("bob");
-  }
+  function searchShop() {}
 
   function handleSelect(e) {
     e.preventDefault();
     console.info("lalalala");
   }
+
+  const handleNext = () => {
+    navigation("/quizz");
+  };
 
   return (
     <MDBContainer className="d-flex">
@@ -44,7 +48,7 @@ function ShopPage() {
 
           <MDBBtn
             className="text-white bg-dark mb-4 mt-5 pt-2 pb-2 fs-5"
-            value="sec"
+            onClick={handleNext}
           >
             Validation
           </MDBBtn>

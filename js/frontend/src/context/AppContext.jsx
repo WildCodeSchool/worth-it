@@ -72,7 +72,6 @@ export function AppContextProvider({ children, apiService }) {
     localStorage.removeItem("token");
     navigate("/login");
   };
-
   const contextValues = useMemo(
     () => ({
       isAdmin,

@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBBtn } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
-function Quizz3({ question1, question2, question3 }) {
-  const setInformations = (e) => {
-    console.info(e.target.value);
-  };
+function Quizz3({ setInformation3 }) {
+  const navigate = useNavigate();
   const sendInfos = () => {
-    console.info(question1, question2, question3);
+    navigate("/recommandation");
   };
   return (
     <MDBCard alignment="center" className="bg-white mb-9 mt-9">
@@ -17,22 +16,22 @@ function Quizz3({ question1, question2, question3 }) {
         <div className="d-flex flex-column mb-4 mt-4 pt-4 pb-4 bg-white">
           <MDBBtn
             className="text-white bg-dark mb-4 pt-4 pb-4 fs-5"
-            value="sec"
-            onClick={setInformations}
+            value="Sec"
+            onClick={setInformation3}
           >
             Sec
           </MDBBtn>
           <MDBBtn
-            value="equilibre"
+            value="Equilibre"
             className="text-white bg-dark mb-4 pt-4 pb-4 fs-5"
-            onClick={setInformations}
+            onClick={setInformation3}
           >
             Équilibré
           </MDBBtn>
           <MDBBtn
             className="text-white bg-dark pt-4 pb-4 fs-5"
-            value="gras"
-            onClick={setInformations}
+            value="Gras"
+            onClick={setInformation3}
           >
             Gras
           </MDBBtn>
@@ -49,6 +48,7 @@ Quizz3.propTypes = {
   question1: PropTypes.arrayOf.isRequired,
   question2: PropTypes.arrayOf.isRequired,
   question3: PropTypes.arrayOf.isRequired,
+  setInformation3: PropTypes.func.isRequired,
   // setQuestion3: PropTypes.func.isRequired,
 };
 export default Quizz3;

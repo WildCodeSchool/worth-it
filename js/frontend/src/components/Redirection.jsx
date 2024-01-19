@@ -13,7 +13,7 @@ function Redirection() {
       type="button"
       onClick={handleGoBack}
       color="link"
-      className="mb-5 text-black"
+      className="text-dark bg-white mb-4 mt-5  fs-7"
     >
       Retour
     </MDBBtn>
