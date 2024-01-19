@@ -25,3 +25,9 @@ h4,
 h5 {
   font-family: "Poppins", sans-serif;
 }
+
+.selected {
+  background-color: white;
+  color: black;
+  border: black 0.1px solid;
+}

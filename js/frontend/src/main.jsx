@@ -15,6 +15,8 @@ import ShopPage from "./pages/ShopPage";
 import ProductPage from "./pages/ProductPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import FacePage from "./pages/FacePage";
+import Result from "./pages/Result";
 
 const apiService = new ApiService();
 
@@ -70,10 +72,19 @@ const router = createBrowserRouter([
         element: <ShopPage />,
       },
       {
-
         path: "/product/:id",
 
         element: <ProductPage />,
+      },
+      {
+        path: "/changeface",
+
+        element: <FacePage />,
+      },
+      {
+        path: "/result",
+
+        element: <Result />,
       },
     ],
   },

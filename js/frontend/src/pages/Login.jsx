@@ -41,7 +41,7 @@ function Login() {
             <h1 className="bg-black pb-4 ">Connexion</h1>
 
             <div className="d-flex flex-column mb-4 bg-black">
-              <h3 className="  text-black bg-white">Pseudo</h3>
+              <h3 className="  text-black bg-white">Email</h3>
               <input
                 value={formValue.email}
                 onChange={onChange}

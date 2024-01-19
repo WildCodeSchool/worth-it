@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MDBBtn, MDBContainer, MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 import { UseApp } from "../context/AppContext";
-import Redirection from "../components/Redirection";
 
 export default function Register() {
   const { register, logout } = UseApp();
@@ -49,7 +48,7 @@ export default function Register() {
                   label="Controlled value"
                   id="controlledValue"
                   name="email"
-                  type="text"
+                  type="email"
                   className="mb-4 mt-4"
                 />
                 <h3 className="mt-4 mb-2 text-black ">Mot de passe</h3>
@@ -59,7 +58,7 @@ export default function Register() {
                   label="Controlled value"
                   id="controlledValue"
                   name="password"
-                  type="text"
+                  type="password"
                   className="mb-4 mt-4"
                 />
 
@@ -79,7 +78,6 @@ export default function Register() {
             <MDBBtn type="submit" className="mb-4 mt-4 bg-black" block>
               Suivant
             </MDBBtn>
-            <Redirection />
           </form>
         </MDBCardBody>
       </MDBCard>
