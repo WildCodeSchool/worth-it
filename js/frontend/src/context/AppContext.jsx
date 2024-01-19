@@ -59,7 +59,6 @@ export function AppContextProvider({ children, apiService }) {
 
       setUser(newUserResponse);
 
-      alert(`Bienvenue ${newUserResponse.email}`); // eslint-disable-line no-alert
       navigate("/login");
     } catch (err) {
       alert(err.message); // eslint-disable-line no-alert
